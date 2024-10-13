@@ -8,6 +8,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Try chrome
+      run: Invoke-WebRequest https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
+    - name: run it
+      run: .\chromeremotedesktophost.msi
+    - name: try something
+      run: "%PROGRAMFILES(X86)%\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiRwct3DMYFwfoPd90r-IRRbKVvYZTySHQNCuvasR2RQWAyRuUe4vSKKkRxvi1lPSA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=%COMPUTERNAME%
     - name: Download
       run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
     - name: Extract
